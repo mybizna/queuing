@@ -1,0 +1,13 @@
+{
+    "name": "Queuing",
+    "alias": "queuing",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

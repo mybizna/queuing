@@ -1,0 +1,7 @@
+queuing,ticketing,administrator,1,1,1,1
+queuing,ticketing,manager,1,1,1,1
+queuing,ticketing,supervisor,1,1,1,1
+queuing,ticketing,staff,1,1,1,0
+queuing,ticketing,registered,1,1,0,0
+queuing,ticketing,guest,1,0,0,0
+
