@@ -2,15 +2,15 @@
 
 namespace Modules\Queuing\Entities;
 
-use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
+use Modules\Base\Entities\BaseModel;
 
-class Ticketing extends BaseModel
+class Ticket extends BaseModel
 {
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description', 'assigned'];
     public $migrationDependancy = [];
-    protected $table = "fleet";
+    protected $table = "queuing_ticket";
 
     /**
      * List of fields for managing postings.
@@ -22,5 +22,8 @@ class Ticketing extends BaseModel
     {
         $table->increments('id');
         $table->string('name');
+        $table->string('description');
+        $table->enum('assigned', ['least', 'specific', 'random'])->default('least')->nullable();
     }
+
 }
