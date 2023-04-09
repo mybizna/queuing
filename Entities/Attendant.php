@@ -3,13 +3,13 @@
 namespace Modules\Queuing\Entities;
 
 use Illuminate\Database\Schema\Blueprint;
-use Modules\Base\Entities\BaseModel;
 use Modules\Base\Classes\Migration;
+use Modules\Base\Entities\BaseModel;
 
 class Attendant extends BaseModel
 {
 
-    protected $fillable = ['name', 'description','destination_id'];
+    protected $fillable = ['name', 'number', 'description', 'user_id', 'destination_id'];
     public $migrationDependancy = ['queuing_destination'];
     protected $table = "queuing_attendant";
 
@@ -23,14 +23,20 @@ class Attendant extends BaseModel
     {
         $table->increments('id');
         $table->string('name');
+        $table->string('number');
         $table->string('description');
-        $table->integer('destination_id');
+        $table->unsignedBigInteger('user_id')->nullable()->index('user_id');
+        $table->unsignedBigInteger('destination_id');
     }
 
     public function post_migration(Blueprint $table)
     {
         if (Migration::checkKeyExist('queuing_attendant', 'destination_id')) {
             $table->foreign('destination_id')->references('id')->on('queuing_destination')->nullOnDelete();
+        }
+
+        if (Migration::checkKeyExist('queuing_attendant', 'user_id')) {
+            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
         }
     }
 }

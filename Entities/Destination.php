@@ -5,12 +5,12 @@ namespace Modules\Queuing\Entities;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Entities\BaseModel;
 
-class Ticket extends BaseModel
+class Destination extends BaseModel
 {
 
-    protected $fillable = ['name', 'description', 'assigned'];
+    protected $fillable = ['name', 'slug', 'description', 'assigned'];
     public $migrationDependancy = [];
-    protected $table = "queuing_ticket";
+    protected $table = "queuing_destination";
 
     /**
      * List of fields for managing postings.
@@ -22,6 +22,7 @@ class Ticket extends BaseModel
     {
         $table->increments('id');
         $table->string('name');
+        $table->string('slug');
         $table->string('description');
         $table->enum('assigned', ['least', 'specific', 'random'])->default('least')->nullable();
     }
