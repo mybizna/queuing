@@ -23,6 +23,7 @@ class Attendant extends BaseModel
     {
         $table->increments('id');
         $table->string('name');
+        $table->string('slug');
         $table->string('number');
         $table->string('description');
         $table->unsignedBigInteger('user_id')->nullable()->index('user_id');
