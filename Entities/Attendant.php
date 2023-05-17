@@ -9,7 +9,7 @@ use Modules\Base\Entities\BaseModel;
 class Attendant extends BaseModel
 {
 
-    protected $fillable = ['name', 'number', 'description', 'user_id', 'destination_id'];
+    protected $fillable = ['name', 'slug', 'description', 'user_id', 'destination_id'];
     public $migrationDependancy = ['queuing_destination'];
     protected $table = "queuing_attendant";
 
@@ -24,7 +24,6 @@ class Attendant extends BaseModel
         $table->increments('id');
         $table->string('name');
         $table->string('slug');
-        $table->string('number');
         $table->string('description');
         $table->unsignedBigInteger('user_id')->nullable()->index('user_id');
         $table->unsignedBigInteger('destination_id');

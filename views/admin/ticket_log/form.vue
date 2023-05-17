@@ -1,5 +1,5 @@
 <template>
-    <edit-render :path_param="['queuing', 'ticketlog']" :model="model">
+    <edit-render :path_param="['queuing', 'ticket_log']" :model="model">
 
         <div class="row">
             <div class="col-md-6">
@@ -11,8 +11,7 @@
                     validation="required" />
             </div>
         </div>
-
-
+        
     </edit-render>
 </template>
 
@@ -25,6 +24,19 @@ export default {
                 id: "",
                 ticket_id: "",
                 attendant_id: "",
+            },
+
+            setting: {
+                ticket_id: {
+                    path_param: ["queuing", "ticket"],
+                    fields: ['number'],
+                    template: '[number]',
+                },
+                attendant_id: {
+                    path_param: ["queuing", "attendant"],
+                    fields: ['name', 'slug'],
+                    template: '[name] - [slug]',
+                },
             },
 
         };

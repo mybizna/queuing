@@ -13,7 +13,7 @@ class Attendant
     public function data(Datasetter $datasetter)
     {
         $destination_id = DB::table('queuing_destination')->where('slug', 'registration')->value('id');
-        $datasetter->add_data('queuing', 'destination', 'slug', [
+        $datasetter->add_data('queuing', 'attendant', 'slug', [
             "name" => "Registration Room 1",
             "slug" => "registration_room_1",
             "description" => "Registration Room 1",
@@ -21,7 +21,7 @@ class Attendant
         ]);
 
         $destination_id = DB::table('queuing_destination')->where('slug', 'billing')->value('id');
-        $datasetter->add_data('queuing', 'destination', 'slug', [
+        $datasetter->add_data('queuing', 'attendant', 'slug', [
             "name" => "Billing Counter 1",
             "slug" => "billing_counter_1",
             "description" => "Billing Counter 1",
@@ -29,7 +29,7 @@ class Attendant
         ]);
 
         $destination_id = DB::table('queuing_destination')->where('slug', 'consultation')->value('id');
-        $datasetter->add_data('queuing', 'destination', 'slug', [
+        $datasetter->add_data('queuing', 'attendant', 'slug', [
             "name" => "Consultation Room 1",
             "slug" => "consultation_room_1",
             "description" => "Consultation Room 1",

@@ -6,7 +6,9 @@
                 <FormKit v-model="model.number" label="Number" id="number" type="text" validation="required" />
             </div>
             <div class="col-md-6">
-                <FormKit v-model="model.attendant_id" label="Attendant" id="attendant_id" type="text" validation="required" />
+                <FormKit label="Attendant" button_label="Select Attendant" id="attendant_id" type="recordselect"
+                    comp_url="queuing/admin/attendant/list.vue" :setting="setting.attendant_id" v-model="model.attendant_id"
+                    validation="required" />
             </div>
         </div>
 
@@ -16,9 +18,16 @@
 
 <script>
 export default {
-    data () {
+    data() {
         return {
             id: null,
+            setting: {
+                attendant_id: {
+                    path_param: ["queuing", "attendant"],
+                    fields: ['name', 'slug'],
+                    template: '[name] - [slug]',
+                },
+            },
             model: {
                 id: "",
                 number: "",

@@ -4,7 +4,8 @@
             <div class="col-md-6">
                 <FormKit v-model="model.id" label="Id" id="id" type="hidden" validation="required" />
                 <FormKit v-model="model.name" label="Name" id="name" type="text" validation="required" />
-                <FormKit v-model="model.assigned" label="Assigned" id="assigned" type="text" validation="required" />
+                <FormKit v-model="model.assigned" label="Assigned" id="assigned" type="select"
+                    :options="{ least: 'Least', specific: 'Specific', random: 'Random', }" validation="required" />
             </div>
             <div class="col-md-6">
                 <FormKit v-model="model.description" label="Description" id="description" type="text"

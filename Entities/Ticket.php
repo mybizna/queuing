@@ -3,13 +3,13 @@
 namespace Modules\Queuing\Entities;
 
 use Illuminate\Database\Schema\Blueprint;
-use Modules\Base\Entities\BaseModel;
 use Modules\Base\Classes\Migration;
+use Modules\Base\Entities\BaseModel;
 
 class Ticket extends BaseModel
 {
 
-    protected $fillable = ['number', 'attendant_id'];
+    protected $fillable = ['number', 'prefix', 'attendant_id'];
     public $migrationDependancy = ['queuing_attendant'];
     protected $table = "queuing_ticket";
 
@@ -23,6 +23,7 @@ class Ticket extends BaseModel
     {
         $table->increments('id');
         $table->string('number');
+        $table->string('prefix');
         $table->integer('attendant_id');
     }
 

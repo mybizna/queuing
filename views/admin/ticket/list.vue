@@ -6,7 +6,7 @@
         </template>
         <template #body="{ item }">
             <td>{{ item.number }}</td>
-            <td>{{ item.attendant_id }}</td>
+            <td>{{ item.attendant_id__queuing_attendant__name }}</td>
         </template>
 
     </table-render>
@@ -17,7 +17,7 @@ export default {
     data() {
         return {
             table_fields: [
-                'number', 'attendant_id'
+                'number', 'attendant_id__queuing_attendant__name'
             ]
 
         };
