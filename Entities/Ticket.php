@@ -9,7 +9,7 @@ use Modules\Base\Entities\BaseModel;
 class Ticket extends BaseModel
 {
 
-    protected $fillable = ['number', 'prefix', 'attendant_id'];
+    protected $fillable = ['number', 'prefix', 'attendant_id', 'is_closed'];
     public $migrationDependancy = ['queuing_attendant'];
     protected $table = "queuing_ticket";
 
@@ -25,6 +25,7 @@ class Ticket extends BaseModel
         $table->string('number');
         $table->string('prefix');
         $table->integer('attendant_id');
+        $table->tinyInteger('is_closed')->default(false);
     }
 
     public function post_migration(Blueprint $table)

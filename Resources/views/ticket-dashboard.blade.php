@@ -2,79 +2,49 @@
 
 @section('content')
     <section class="bg-blue-50">
-        <div class="w-full md:w-4/5 lg:w-2/3 mx-auto pt-5">
-            <div class=" shadow-xl rounded-md bg-white sm:mr-2 m-4 p-2">
+        <div class="w-full mx-auto pt-5">
+            <div class="sm:flex">
+                <div class="sm:flex-auto sm:w-1/2 text-center p-1">
+                    <div class="w-full shadow-xl rounded-md bg-white p-2 mb-4">
 
-                <div class="row">
-
-                    <div class="col-sm-6 text-center">
-                        <p class="text-xl font-semibold text-orange-600">Current Serving</p>
-                        <h1 class="text-2xl font-semibold text-blue-900">Token Number</h1>
-
+                        <p class="text-xl font-semibold text-orange-600 mt-4">Current Serving</p>
+                        <h1 class="text-2xl font-semibold text-blue-900 mt-4">Token Number</h1>
 
                         <div
-                            class="inline-block text-2xl font-semibold text-orange-600 border border-2 border-orange-600 rounded p-4 w-4/5 md:w-3/5 lg:w-1/2">
+                            class="inline-block mt-6 text-6xl font-semibold text-orange-600 border border-2 border-orange-600 rounded p-4 w-4/5 md:w-3/5 lg:w-1/2">
                             {{ $tickets[0]->number }}
                         </div>
-                        <div>
-                            <button value="" name="destination_id"
-                                class="text-white mt-4 p-2 shadow-xl rounded-md bg-gradient-to-br from-sky-300 via-blue-700 to-sky-300 hover:from-pink-500  hover:via-red-900  hover:to-yellow-900 sm:ml-2 m-1">
-                                NEXT
-                            </button>
-                            <button value="" name="destination_id"
-                                class="text-white mt-4 p-2 shadow-xl rounded-md bg-gradient-to-br from-sky-300 via-blue-700 to-sky-300 hover:from-pink-500  hover:via-red-900  hover:to-yellow-900 sm:ml-2 m-1">
-                                RECALL
-                            </button>
-                            <button value="" name="destination_id"
-                                class="text-white mt-4 p-2 shadow-xl rounded-md bg-gradient-to-br from-sky-300 via-blue-700 to-sky-300 hover:from-pink-500  hover:via-red-900  hover:to-yellow-900 sm:ml-2 m-1">
-                                TRANSFER
-                            </button>
-                            <button value="" name="destination_id"
-                                class="text-white mt-4 p-2 shadow-xl rounded-md bg-gradient-to-br from-blue-300 via-blue-700 to-blue-300 hover:from-pink-500  hover:via-red-900  hover:to-yellow-900 sm:ml-2 m-1">
-                                PAUSE
-                            </button>
-                            <button value="" name="destination_id"
-                                class="text-white mt-4 p-2 shadow-xl rounded-md bg-gradient-to-br from-blue-300 via-blue-700 to-blue-300 hover:from-pink-500  hover:via-red-900  hover:to-yellow-900 sm:ml-2 m-1">
-                                CLOSE
-                            </button>
-                        </div>
+
+                        <h1 class="text-4xl font-semibold text-blue-900 my-6">Counter 1</h1>
 
                     </div>
 
-                    <div class="col-sm-6">
-                        <div class="text-center">
-                            <p class="font-semibold">
-                                {{ ___('isp-access-dashboard-logged-in-title') }}
-                            </p>
 
-                            <p class=" text-sm text-gray-600 py-1">
-                                {{ ___('isp-access-dashboard-logged-in-instruction') }}
-                            </p>
-
-                            <p class="font-bold text-xl text-center">
-                            </p>
-                        </div>
-
-                        <div class="text-center">
-                            <p class="font-semibold text-lg">
-                                {{ ___('isp-access-dashboard-login-title') }}
-                            </p>
-
-                            <p class=" text-sm text-gray-400 py-1">
-                                {{ ___('isp-access-dashboard-login-instruction') }}
-                            </p>
-
-                            <a id='package' href=""
-                                class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
-                                {{ ___('isp-access-dashboard-login-button') }}
-                            </a>
-
-                        </div>
-
-                    </div>
                 </div>
 
+                <div class="sm:flex-auto w-1/1 sm:w-1/2 p-1 hidden sm:block">
+                    <div class="shadow-xl rounded-md bg-white p-1">
+                        <iframe width="100%" height="310"
+                            src="https://www.youtube.com/embed/4cPOoXRxNPY?&autoplay=1&mute=1"frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
             </div>
+
+            @if (count($tickets) > 1)
+                <div class="grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+                    @foreach ($tickets as $ticket)
+                        @if ($tickets[0]->number != $ticket->number)
+                            <div class="h-full shadow-xl rounded-md bg-blue-900 text-center  mb-2 py-4">
+                                <span class="text-4xl text-white font-semibold">{{ $ticket->number }}</span>
+                                <p class="text-md text-white">Counter 1</p>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            @endif
+
+        </div>
 
 
         </div>
