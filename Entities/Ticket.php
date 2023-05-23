@@ -25,6 +25,7 @@ class Ticket extends BaseModel
         $table->string('number');
         $table->string('prefix');
         $table->integer('attendant_id');
+        $table->tinyInteger('is_announced')->default(false);
         $table->tinyInteger('is_closed')->default(false);
     }
 
