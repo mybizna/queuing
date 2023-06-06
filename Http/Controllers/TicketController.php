@@ -14,19 +14,8 @@ class TicketController extends BaseController
 {
     public function ticket(Request $request)
     {
-        $prefix = 'Ticket/' . date('Y') . '/' . date('m') . '/' . date('d');
 
-        $destinations = Destination::get();
-        $tickets = Ticket::where('prefix', $prefix)
-            ->where('is_closed', false)->orderBy('id')->get();
-        $completed_tickets = Ticket::where('prefix', $prefix)
-            ->where('is_closed', true)->count();
-
-        $data = [
-            'tickets' => $tickets,
-            'completed_tickets' => $completed_tickets,
-            'destinations' => $destinations,
-        ];
+        $data = $this->getTicket();
 
         return response()
             ->view('queuing::ticket-dashboard', $data)
@@ -195,11 +184,43 @@ class TicketController extends BaseController
         exit;
 
         /*
-        return redirect()
-        ->route('queuing_ticket')
-        ->header('pragma', 'no-cache')
-        ->header('Cache-Control', 'no-store,no-cache, must-revalidate, post-check=0, pre-check=0');
-        */
+    return redirect()
+    ->route('queuing_ticket')
+    ->header('pragma', 'no-cache')
+    ->header('Cache-Control', 'no-store,no-cache, must-revalidate, post-check=0, pre-check=0');
+     */
+    }
+
+    private function getTicket()
+    {
+        $prefix = 'Ticket/' . date('Y') . '/' . date('m') . '/' . date('d');
+
+        $destinations = Destination::select('name', 'slug', 'description', 'assigned')
+            ->get();
+
+        $tickets = Ticket::from('queuing_ticket AS at')
+            ->select('at.number', 'at.prefix', 'qa.name AS attendant_name', 'at.is_announced', 'at.is_closed')
+            ->leftJoin('queuing_attendant AS qa', 'qa.id', '=', 'at.attendant_id')
+            ->where('at.prefix', $prefix)
+            ->where('at.is_closed', false)
+            ->reorder('at.id', 'DESC')->get();
+
+        $completed_tickets = Ticket::where('prefix', $prefix)
+            ->where('is_closed', true)
+            ->count();
+
+        $top_ticket = $tickets->count() > 1 ? $tickets[0] : (object) array();
+
+        $data = [
+            'top_ticket_str' => $tickets->count() > 1 ? $top_ticket->number : 'No Ticket',
+            'top_ticket' => $top_ticket,
+            'prefix' => $prefix,
+            'tickets' => $tickets,
+            'completed_tickets' => $completed_tickets,
+            'destinations' => $destinations,
+        ];
+
+        return $data;
     }
 
     private function getPreviousAttendant($ticket_id, $attendant_id)

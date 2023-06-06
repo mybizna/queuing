@@ -14,39 +14,7 @@
                     });
             }
 
-            //function for playing audio files for each ticket number letter based on ticket number and destination
-            function playAudio(ticketNumber, destination) {
-                // Map ticket numbers to corresponding audio file names
-                const audioFiles = {
-                    A: 'audio_a.mp3',
-                    B: 'audio_b.mp3',
-                    C: 'audio_c.mp3',
-                    // Add more mappings as needed
-                };
-
-                // Check if the ticket number has a corresponding audio file
-                if (ticketNumber in audioFiles) {
-                    const audioFile = audioFiles[ticketNumber];
-                    const audioElement = new Audio(audioFile);
-                    audioElement.play();
-                    console.log(`Playing audio for ticket ${ticketNumber}`);
-                } else {
-                    console.log(`No audio available for ticket ${ticketNumber}`);
-                }
-
-                // Play additional audio based on destination if needed
-                if (destination === 'London') {
-                    const destinationAudio = new Audio('audio_london.mp3');
-                    destinationAudio.play();
-                    console.log(`Playing audio for destination: ${destination}`);
-                } else if (destination === 'Paris') {
-                    const destinationAudio = new Audio('audio_paris.mp3');
-                    destinationAudio.play();
-                    console.log(`Playing audio for destination: ${destination}`);
-                } else {
-                    console.log(`No audio available for destination: ${destination}`);
-                }
-            }
+           
         </script>
 
 
