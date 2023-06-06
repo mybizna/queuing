@@ -24,15 +24,13 @@ class Ticket extends BaseModel
         $table->increments('id');
         $table->string('number');
         $table->string('prefix');
-        $table->integer('attendant_id');
+        $table->foreignId('attendant_id');
         $table->tinyInteger('is_announced')->default(false);
         $table->tinyInteger('is_closed')->default(false);
     }
 
     public function post_migration(Blueprint $table)
     {
-        if (Migration::checkKeyExist('queuing_ticket', 'attendant_id')) {
-            $table->foreign('attendant_id')->references('id')->on('queuing_attendant')->nullOnDelete();
-        }
+        Migration::addForeign($table, 'queuing_attendant', 'attendant_id');
     }
 }

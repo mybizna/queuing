@@ -95,12 +95,20 @@
 
                 playAudio() {
 
-                    let top_ticket_str_split = this.top_ticket_str.split('');
+                    let top_ticket_str_split = this.top_ticket_str.toLowerCase().split('');
+                    let top_ticket_end_split = this.top_ticket.attendant_name.toLowerCase().split(' ');
+
+                    console.log(top_ticket_end_split);
 
                     // Generate a merged array for top_ticket_str and prefix_statement_arr
-                    let top_ticket_str_arr = ['ticket_number', ...top_ticket_str_split, 'please_proceed', 'counter',
-                        'number'
+                    let top_ticket_str_arr = [
+                        'ticket_number',
+                        ...top_ticket_str_split,
+                        'please_proceed',
+                        ...top_ticket_end_split,
                     ];
+
+                    console.log(top_ticket_str_arr);
 
                     let that = this;
                     let audioFiles = [];

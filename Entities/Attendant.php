@@ -25,18 +25,13 @@ class Attendant extends BaseModel
         $table->string('name');
         $table->string('slug');
         $table->string('description');
-        $table->unsignedBigInteger('user_id')->nullable()->index('user_id');
-        $table->unsignedBigInteger('destination_id');
+        $table->foreignId('user_id')->nullable()->index('user_id');
+        $table->foreignId('destination_id');
     }
 
     public function post_migration(Blueprint $table)
     {
-        if (Migration::checkKeyExist('queuing_attendant', 'destination_id')) {
-            $table->foreign('destination_id')->references('id')->on('queuing_destination')->nullOnDelete();
-        }
-
-        if (Migration::checkKeyExist('queuing_attendant', 'user_id')) {
-            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
-        }
+        Migration::addForeign($table, 'queuing_destination', 'destination_id');
+        Migration::addForeign($table, 'users', 'user_id');
     }
 }

@@ -22,18 +22,13 @@ class TicketLog extends BaseModel
     public function migration(Blueprint $table)
     {
         $table->increments('id');
-        $table->integer('ticket_id');
-        $table->integer('attendant_id');
+        $table->foreignId('ticket_id');
+        $table->foreignId('attendant_id');
     }
 
     public function post_migration(Blueprint $table)
     {
-        if (Migration::checkKeyExist('queuing_ticket', 'ticket_id')) {
-            $table->foreign('ticket_id')->references('id')->on('queuing_ticket')->nullOnDelete();
-        }
-
-        if (Migration::checkKeyExist('queuing_ticket', 'attendant_id')) {
-            $table->foreign('attendant_id')->references('id')->on('queuing_attendant')->nullOnDelete();
-        }
+        Migration::addForeign($table, 'queuing_ticket', 'ticket_id');
+        Migration::addForeign($table, 'queuing_attendant', 'attendant_id');
     }
 }
