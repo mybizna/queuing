@@ -25,8 +25,8 @@ class Ticket extends BaseModel
         $table->string('number');
         $table->string('prefix');
         $table->foreignId('attendant_id');
-        $table->tinyInteger('is_announced')->default(false);
-        $table->tinyInteger('is_closed')->default(false);
+        $table->tinyInteger('is_announced')->nullable()->default(0);
+        $table->tinyInteger('is_closed')->nullable()->default(0);
     }
 
     public function post_migration(Blueprint $table)
