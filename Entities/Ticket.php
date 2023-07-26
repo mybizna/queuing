@@ -5,6 +5,8 @@ namespace Modules\Queuing\Entities;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Classes\Migration;
 use Modules\Base\Entities\BaseModel;
+use Modules\Core\Classes\Views\FormBuilder;
+use Modules\Core\Classes\Views\ListTable;
 
 class Ticket extends BaseModel
 {
@@ -13,6 +15,47 @@ class Ticket extends BaseModel
     public $migrationDependancy = ['queuing_attendant'];
     protected $table = "queuing_ticket";
 
+    public function listTable()
+    {
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('number')->type('text')->ordering(true);
+        $fields->name('prefix')->type('text')->ordering(true);
+        $fields->name('attendant_id')->type('recordpicker')->table('queuing_attendant')->ordering(true);
+        $fields->name('is_closed')->type('switch')->ordering(true);
+
+        return $fields;
+
+    }
+
+    public function formBuilder()
+    {
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('number')->type('text')->group('w-1/2');
+        $fields->name('prefix')->type('text')->group('w-1/2');
+        $fields->name('attendant_id')->type('recordpicker')->table('queuing_attendant')->group('w-1/2');
+        $fields->name('is_closed')->type('switch')->group('w-1/2');
+
+        return $fields;
+
+    }
+
+    public function filter()
+    {
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('number')->type('text')->group('w-1/6');
+        $fields->name('prefix')->type('text')->group('w-1/6');
+        $fields->name('attendant_id')->type('recordpicker')->table('queuing_attendant')->group('w-1/6');
+        $fields->name('is_closed')->type('switch')->group('w-1/6');
+
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *
