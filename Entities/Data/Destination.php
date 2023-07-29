@@ -6,10 +6,20 @@ use Modules\Base\Classes\Datasetter;
 
 class Destination
 {
-
+    /**
+     * Set ordering of the Class to be migrated.
+     * @var int
+     */
     public $ordering = 1;
 
-    public function data(Datasetter $datasetter)
+    /**
+     * Run the database seeds with system default records.
+     *
+     * @param Datasetter $datasetter
+     *
+     * @return void
+     */
+    public function data(Datasetter $datasetter): void
     {
         $datasetter->add_data('queuing', 'destination', 'slug', [
             "name" => "Registration",

@@ -1,5 +1,7 @@
 <?php
 
+/** @var \Modules\Base\Classes\Fetch\Rights $this */
+
 $this->add_right("queuing", "attendant", "administrator", view:true, add:true, edit:true, delete:true);
 $this->add_right("queuing", "attendant", "manager", view:true, add:true, edit:true, delete:true);
 $this->add_right("queuing", "attendant", "supervisor", view:true, add:true, edit:true, delete:true);

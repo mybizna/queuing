@@ -2,15 +2,25 @@
 
 namespace Modules\Queuing\Entities\Data;
 
-use Modules\Base\Classes\Datasetter;
 use Illuminate\Support\Facades\DB;
+use Modules\Base\Classes\Datasetter;
 
 class Attendant
 {
-
+    /**
+     * Set ordering of the Class to be migrated.
+     * @var int
+     */
     public $ordering = 1;
 
-    public function data(Datasetter $datasetter)
+    /**
+     * Run the database seeds with system default records.
+     *
+     * @param Datasetter $datasetter
+     *
+     * @return void
+     */
+    public function data(Datasetter $datasetter): void
     {
         $destination_id = DB::table('queuing_destination')->where('slug', 'registration')->value('id');
         $datasetter->add_data('queuing', 'attendant', 'slug', [
