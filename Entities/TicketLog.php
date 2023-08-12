@@ -50,8 +50,8 @@ class TicketLog extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('ticket_id')->type('recordpicker')->table('queuing_ticket')->ordering(true);
-        $fields->name('attendant_id')->type('recordpicker')->table('queuing_attendant')->ordering(true);
+        $fields->name('ticket_id')->type('recordpicker')->table(['queuing', 'ticket'])->ordering(true);
+        $fields->name('attendant_id')->type('recordpicker')->table(['queuing', 'attendant'])->ordering(true);
 
         return $fields;
 
@@ -67,8 +67,8 @@ class TicketLog extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('ticket_id')->type('recordpicker')->table('queuing_ticket')->group('w-1/2');
-        $fields->name('attendant_id')->type('recordpicker')->table('queuing_attendant')->group('w-1/2');
+        $fields->name('ticket_id')->type('recordpicker')->table(['queuing', 'ticket'])->group('w-1/2');
+        $fields->name('attendant_id')->type('recordpicker')->table(['queuing', 'attendant'])->group('w-1/2');
 
         return $fields;
 
@@ -84,8 +84,8 @@ class TicketLog extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('ticket_id')->type('recordpicker')->table('queuing_ticket')->group('w-1/6');
-        $fields->name('attendant_id')->type('recordpicker')->table('queuing_attendant')->group('w-1/6');
+        $fields->name('ticket_id')->type('recordpicker')->table(['queuing', 'ticket'])->group('w-1/6');
+        $fields->name('attendant_id')->type('recordpicker')->table(['queuing', 'attendant'])->group('w-1/6');
 
         return $fields;
 

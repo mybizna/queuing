@@ -50,8 +50,8 @@ class Attendant extends BaseModel
 
         $fields->name('name')->type('text')->ordering(true);
         $fields->name('slug')->type('text')->ordering(true);
-        $fields->name('user_id')->type('recordpicker')->table('users')->ordering(true);
-        $fields->name('destination_id')->type('recordpicker')->table('queuing_destination')->ordering(true);
+        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->ordering(true);
+        $fields->name('destination_id')->type('recordpicker')->table(['queuing', 'destination'])->ordering(true);
 
         return $fields;
 
@@ -69,8 +69,8 @@ class Attendant extends BaseModel
 
         $fields->name('name')->type('text')->group('w-1/2');
         $fields->name('slug')->type('text')->group('w-1/2');
-        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/2');
-        $fields->name('destination_id')->type('recordpicker')->table('queuing_destination')->group('w-1/2');
+        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->group('w-1/2');
+        $fields->name('destination_id')->type('recordpicker')->table(['queuing', 'destination'])->group('w-1/2');
         $fields->name('description')->type('textarea')->group('w-full');
 
         return $fields;
@@ -89,8 +89,8 @@ class Attendant extends BaseModel
 
         $fields->name('name')->type('text')->group('w-1/6');
         $fields->name('slug')->type('text')->group('w-1/6');
-        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/6');
-        $fields->name('destination_id')->type('recordpicker')->table('queuing_destination')->group('w-1/6');
+        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->group('w-1/6');
+        $fields->name('destination_id')->type('recordpicker')->table(['queuing', 'destination'])->group('w-1/6');
 
         return $fields;
 

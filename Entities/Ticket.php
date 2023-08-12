@@ -50,7 +50,7 @@ class Ticket extends BaseModel
 
         $fields->name('number')->type('text')->ordering(true);
         $fields->name('prefix')->type('text')->ordering(true);
-        $fields->name('attendant_id')->type('recordpicker')->table('queuing_attendant')->ordering(true);
+        $fields->name('attendant_id')->type('recordpicker')->table(['queuing', 'attendant'])->ordering(true);
         $fields->name('is_closed')->type('switch')->ordering(true);
 
         return $fields;
@@ -69,7 +69,7 @@ class Ticket extends BaseModel
 
         $fields->name('number')->type('text')->group('w-1/2');
         $fields->name('prefix')->type('text')->group('w-1/2');
-        $fields->name('attendant_id')->type('recordpicker')->table('queuing_attendant')->group('w-1/2');
+        $fields->name('attendant_id')->type('recordpicker')->table(['queuing', 'attendant'])->group('w-1/2');
         $fields->name('is_closed')->type('switch')->group('w-1/2');
 
         return $fields;
@@ -88,7 +88,7 @@ class Ticket extends BaseModel
 
         $fields->name('number')->type('text')->group('w-1/6');
         $fields->name('prefix')->type('text')->group('w-1/6');
-        $fields->name('attendant_id')->type('recordpicker')->table('queuing_attendant')->group('w-1/6');
+        $fields->name('attendant_id')->type('recordpicker')->table(['queuing', 'attendant'])->group('w-1/6');
         $fields->name('is_closed')->type('switch')->group('w-1/6');
 
         return $fields;
