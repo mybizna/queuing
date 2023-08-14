@@ -4,8 +4,6 @@ namespace Modules\Queuing\Entities;
 
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Classes\Migration;
-use Modules\Base\Classes\Views\FormBuilder;
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Entities\BaseModel;
 
 class Attendant extends BaseModel
@@ -39,88 +37,19 @@ class Attendant extends BaseModel
     protected $table = "queuing_attendant";
 
     /**
-     * Function for defining list of fields in table view.
-     *
-     * @return ListTable
-     */
-    public function listTable(): ListTable
-    {
-        // listing view fields
-        $fields = new ListTable();
-
-        $fields->name('name')->type('text')->ordering(true);
-        $fields->name('slug')->type('text')->ordering(true);
-        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->ordering(true);
-        $fields->name('destination_id')->type('recordpicker')->table(['queuing', 'destination'])->ordering(true);
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in form view.
-     *
-     * @return FormBuilder
-     */
-    public function formBuilder(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('name')->type('text')->group('w-1/2');
-        $fields->name('slug')->type('text')->group('w-1/2');
-        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->group('w-1/2');
-        $fields->name('destination_id')->type('recordpicker')->table(['queuing', 'destination'])->group('w-1/2');
-        $fields->name('description')->type('textarea')->group('w-full');
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in filter view.
-     *
-     * @return FormBuilder
-     */
-    public function filter(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('name')->type('text')->group('w-1/6');
-        $fields->name('slug')->type('text')->group('w-1/6');
-        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->group('w-1/6');
-        $fields->name('destination_id')->type('recordpicker')->table(['queuing', 'destination'])->group('w-1/6');
-
-        return $fields;
-
-    }
-    /**
      * List of fields to be migrated to the datebase when creating or updating model during migration.
      *
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table): void
+    public function fields(Blueprint $table): void
     {
-        $table->increments('id');
-        $table->string('name');
-        $table->string('slug');
-        $table->string('description');
-        $table->foreignId('user_id')->nullable()->index('user_id');
-        $table->foreignId('destination_id');
+        $this->fields->increments('id')->html('text');
+        $this->fields->string('name')->html('text');
+        $this->fields->string('slug')->html('text');
+        $this->fields->string('description')->html('textarea');
+        $this->fields->foreignId('user_id')->nullable()->index('user_id')->html('recordpicker')->table(['users']);
+        $this->fields->foreignId('destination_id')->html('recordpicker')->table(['queuing', 'destination']);
     }
 
-    /**
-     * Handle post migration processes for adding foreign keys.
-     *
-     * @param Blueprint $table
-     *
-     * @return void
-     */
-    public function post_migration(Blueprint $table): void
-    {
-        Migration::addForeign($table, 'queuing_destination', 'destination_id');
-        Migration::addForeign($table, 'users', 'user_id');
-    }
 }
