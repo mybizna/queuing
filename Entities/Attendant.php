@@ -42,7 +42,7 @@ class Attendant extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
         
@@ -52,6 +52,19 @@ class Attendant extends BaseModel
         $this->fields->string('description')->html('textarea');
         $this->fields->foreignId('user_id')->nullable()->index('user_id')->html('recordpicker')->table(['users']);
         $this->fields->foreignId('destination_id')->html('recordpicker')->table(['queuing', 'destination']);
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['name', 'slug', 'user_id', 'destination_id'],
+            'filter' => ['name', 'slug', 'user_id', 'destination_id'],
+        ];
+
+        return $structure;
     }
 
 }
