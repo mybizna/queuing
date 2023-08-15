@@ -49,7 +49,7 @@ class Ticket extends BaseModel
         $this->fields->increments('id')->html('text');
         $this->fields->string('number')->html('text');
         $this->fields->string('prefix')->html('text');
-        $this->fields->foreignId('attendant_id')->html('recordpicker')->table(['queuing', 'attendant']);
+        $this->fields->foreignId('attendant_id')->html('recordpicker')->relation(['queuing', 'attendant']);
         $this->fields->tinyInteger('is_announced')->nullable()->default(0)->html('switch');
         $this->fields->tinyInteger('is_closed')->nullable()->default(0)->html('switch');
     }

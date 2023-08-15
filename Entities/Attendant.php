@@ -50,8 +50,8 @@ class Attendant extends BaseModel
         $this->fields->string('name')->html('text');
         $this->fields->string('slug')->html('text');
         $this->fields->string('description')->html('textarea');
-        $this->fields->foreignId('user_id')->nullable()->index('user_id')->html('recordpicker')->table(['users']);
-        $this->fields->foreignId('destination_id')->html('recordpicker')->table(['queuing', 'destination']);
+        $this->fields->foreignId('user_id')->nullable()->index('user_id')->html('recordpicker')->relation(['users']);
+        $this->fields->foreignId('destination_id')->html('recordpicker')->relation(['queuing', 'destination']);
     }
 
     /**

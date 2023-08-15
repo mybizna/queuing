@@ -44,12 +44,14 @@ class Destination extends BaseModel
     public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
+
+        $assigned = ['least', 'specific', 'random'];
         
         $this->fields->increments('id')->html('text');
         $this->fields->string('name')->html('text');
         $this->fields->string('slug')->html('text');
         $this->fields->string('description')->html('textarea');
-        $this->fields->enum('assigned', ['least', 'specific', 'random'])->default('least')->nullable()->html('select');
+        $this->fields->enum('assigned', $assigned)->options($assigned)->default('least')->nullable()->html('select');
     }
 
     /**
