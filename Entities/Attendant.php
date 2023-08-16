@@ -45,7 +45,7 @@ class Attendant extends BaseModel
     public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->string('name')->html('text');
         $this->fields->string('slug')->html('text');
@@ -59,8 +59,14 @@ class Attendant extends BaseModel
      */
     public function structure($structure): array
     {
+
         $structure = [
             'table' => ['name', 'slug', 'user_id', 'destination_id'],
+            'form' => [
+                ['label' => 'Name', 'class' => 'w-full', 'fields' => ['name', 'slug']],
+                ['label' => 'Name', 'class' => 'w-1/2', 'fields' => ['user_id', 'destination_id']],
+                ['label' => 'Name', 'class' => 'w-full', 'fields' => ['description']],
+            ],
             'filter' => ['name', 'slug', 'user_id', 'destination_id'],
         ];
 

@@ -46,7 +46,7 @@ class Destination extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $assigned = ['least', 'specific', 'random'];
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->string('name')->html('text');
         $this->fields->string('slug')->html('text');
@@ -61,6 +61,11 @@ class Destination extends BaseModel
     {
         $structure = [
             'table' => ['name', 'slug', 'assigned'],
+            'form' => [
+                ['label' => 'Name', 'class' => 'w-full', 'fields' => ['name', 'slug']],
+                ['label' => 'Assigned', 'class' => 'w-1/2', 'fields' => ['assigned']],
+                ['label' => 'Description', 'class' => 'w-full', 'fields' => ['description']],
+            ],
             'filter' => ['name', 'slug', 'assigned'],
         ];
 
