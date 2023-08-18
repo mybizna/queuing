@@ -18,7 +18,7 @@
         </script>
 
 
-        <div class="w-full md:w-4/5 lg:w-1/2 mx-auto pt-5">
+        <div class="col-span-full md:w-4/5 lg:col-span-6 mx-auto pt-5">
 
             <div>
                 <h1 class="text-4xl font-semibold text-center text-blue-900">TICKET</h1>
@@ -32,7 +32,7 @@
                         </p>
                         <div class="text-center">
                             <input
-                                class="formkit-input form-input rounded border py-2 px-3 focus:border-sky-500 hover:border-sky-500 text-grey-800 text-6xl h-20 w-full"
+                                class="formkit-input form-input rounded border py-2 px-3 focus:border-sky-500 hover:border-sky-500 text-grey-800 text-6xl h-20 col-span-full"
                                 type="text" name="phone_number" id="phone_number">
 
                         </div>
@@ -43,7 +43,7 @@
 
             @foreach ($destinations as $destination)
                 <button value="{{ $destination->id }}" name="destination_id"
-                    class="w-full mt-4 shadow-xl rounded-md bg-gradient-to-br from-pink-500 via-red-900 to-pink-700 hover:from-pink-500  hover:via-red-900  hover:to-yellow-900 sm:ml-2 m-1"
+                    class="col-span-full mt-4 shadow-xl rounded-md bg-gradient-to-br from-pink-500 via-red-900 to-pink-700 hover:from-pink-500  hover:via-red-900  hover:to-yellow-900 sm:ml-2 m-1"
                     onclick="ajax_print('{{ url(route('queuing_ticket_save')) }}?destination_id={{ $destination->id }}',this)">
                     <div class="grid h-20 place-items-center">
                         <h3 class="text-2xl text-white text-center">
@@ -59,7 +59,7 @@
 
     <div class="relative overflow-hidden mb-8">
         <div class="overflow-hidden px-3 py-10 flex justify-center">
-            <div class="w-full max-w-xs login-card">
+            <div class="col-span-full max-w-xs login-card">
 
                 <p class="text-center text-gray-500 text-xs">
                     &copy;2022 - {{ date('Y') }}. {{ ___('isp-copy-right') }}

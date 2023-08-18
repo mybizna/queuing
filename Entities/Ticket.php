@@ -45,7 +45,7 @@ class Ticket extends BaseModel
     public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->string('number')->html('text');
         $this->fields->string('prefix')->html('text');
@@ -59,10 +59,8 @@ class Ticket extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['number', 'prefix', 'attendant_id', 'is_closed'],
-            'filter' => ['number', 'prefix', 'attendant_id', 'is_closed'],
-        ];
+        $structure['table'] = ['number', 'prefix', 'attendant_id', 'is_closed'];
+        $structure['filter'] = ['number', 'prefix', 'attendant_id', 'is_closed'];
 
         return $structure;
     }

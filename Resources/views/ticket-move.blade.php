@@ -3,9 +3,9 @@
 @section('content')
     <section class="bg-blue-50">
 
-        <div class="w-full mx-auto">
+        <div class="col-span-full mx-auto">
             <div class="sm:flex">
-                <div class="sm:flex-auto sm:w-1/2 text-center p-1">
+                <div class="sm:flex-auto sm:col-span-6 text-center p-1">
 
                     <div class=" shadow-xl rounded-md bg-white p-2 sm:mx-0">
                         <div class="flex">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
 
-                    <div class="w-full shadow-xl rounded-md bg-white p-2 mt-2">
+                    <div class="col-span-full shadow-xl rounded-md bg-white p-2 mt-2">
 
                         <form action="{{ url(route('queuing_ticket_savemove')) }}" method="POST">
 
@@ -82,13 +82,13 @@
                                     <div class="flex">
                                         <div class="flex-auto px-2">
                                             <button value="pause" name="move"
-                                                class="w-full text-white p-2 bg-orange-500 m-1">
+                                                class="col-span-full text-white p-2 bg-orange-500 m-1">
                                                 PAUSE
                                             </button>
                                         </div>
                                         <div class="flex-auto px-2">
                                             <button value="close" name="move"
-                                                class="w-full text-white p-2 bg-red-500 m-1">
+                                                class="col-span-full text-white p-2 bg-red-500 m-1">
                                                 CLOSE
                                             </button>
                                         </div>
@@ -105,19 +105,19 @@
                                 @if ($tickets->isNotEmpty())
                                     <div class="flex-auto w-1/3">
                                         <button value="next" name="move"
-                                            class="w-full text-white mt-4 p-2 bg-blue-800 m-1">
+                                            class="col-span-full text-white mt-4 p-2 bg-blue-800 m-1">
                                             NEXT
                                             <br>
                                             <small style="font-size:9px;">(CLOSE TICKET & CALL NEXT )</small>
                                         </button>
 
                                         <button value="previous" name="move"
-                                            class="w-full text-white mt-4 p-2 bg-blue-800 m-1">
+                                            class="col-span-full text-white mt-4 p-2 bg-blue-800 m-1">
                                             PREV-ATTENDANT
                                         </button>
 
                                         <button value="recall" name="move"
-                                            class="w-full text-white mt-4 p-2 bg-blue-800 m-1">
+                                            class="col-span-full text-white mt-4 p-2 bg-blue-800 m-1">
                                             RECALL
                                         </button>
 
@@ -125,7 +125,7 @@
                                 @endif
                             </div>
 
-                            <div class="w-full text-left">
+                            <div class="col-span-full text-left">
                                 <h2 class="text-left border-b border-b-orange-200">TRANSFER:</h2>
                                 @foreach ($destinations as $destination)
                                     @if ($destination->attendants->count() > 1)
@@ -154,7 +154,7 @@
                     </div>
                 </div>
 
-                <div class="sm:flex-auto w-1/1 sm:w-1/2 p-1">
+                <div class="sm:flex-auto w-1/1 sm:col-span-6 p-1">
                     <div class="h-full shadow-xl rounded-md bg-white p-1">
                         @if (count($tickets) > 1)
                             <p class="text-xl font-semibold text-blue-900 text-center">Queue</p>
@@ -190,7 +190,7 @@
 
     <div class="relative overflow-hidden mb-8">
         <div class="overflow-hidden px-3 py-10 flex justify-center">
-            <div class="w-full max-w-xs login-card">
+            <div class="col-span-full max-w-xs login-card">
 
                 <p class="text-center text-gray-500 text-xs">
                     &copy;2022 - {{ date('Y') }}. {{ ___('isp-copy-right') }}

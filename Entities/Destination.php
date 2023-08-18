@@ -59,15 +59,13 @@ class Destination extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['name', 'slug', 'assigned'],
-            'form' => [
-                ['label' => 'Name', 'class' => 'w-full', 'fields' => ['name', 'slug']],
-                ['label' => 'Assigned', 'class' => 'w-1/2', 'fields' => ['assigned']],
-                ['label' => 'Description', 'class' => 'w-full', 'fields' => ['description']],
-            ],
-            'filter' => ['name', 'slug', 'assigned'],
+        $structure['table'] = ['name', 'slug', 'assigned'];
+        $structure['form'] = [
+            ['label' => 'Name', 'class' => 'col-span-full', 'fields' => ['name', 'slug']],
+            ['label' => 'Assigned', 'class' => 'col-span-6', 'fields' => ['assigned']],
+            ['label' => 'Description', 'class' => 'col-span-full', 'fields' => ['description']],
         ];
+        $structure['filter'] = ['name', 'slug', 'assigned'];
 
         return $structure;
     }

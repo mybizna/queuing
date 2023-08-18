@@ -60,15 +60,13 @@ class Attendant extends BaseModel
     public function structure($structure): array
     {
 
-        $structure = [
-            'table' => ['name', 'slug', 'user_id', 'destination_id'],
-            'form' => [
-                ['label' => 'Name', 'class' => 'w-full', 'fields' => ['name', 'slug']],
-                ['label' => 'Name', 'class' => 'w-1/2', 'fields' => ['user_id', 'destination_id']],
-                ['label' => 'Name', 'class' => 'w-full', 'fields' => ['description']],
-            ],
-            'filter' => ['name', 'slug', 'user_id', 'destination_id'],
+        $structure['table'] = ['name', 'slug', 'user_id', 'destination_id'];
+        $structure['form'] = [
+            ['label' => 'Name', 'class' => 'col-span-full', 'fields' => ['name', 'slug']],
+            ['label' => 'Name', 'class' => 'col-span-6', 'fields' => ['user_id', 'destination_id']],
+            ['label' => 'Name', 'class' => 'col-span-full', 'fields' => ['description']],
         ];
+        $structure['filter'] = ['name', 'slug', 'user_id', 'destination_id'];
 
         return $structure;
     }

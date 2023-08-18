@@ -7,16 +7,16 @@
         @{{ message }}
 
         <section class="bg-blue-50">
-            <div class="w-full mx-auto pt-5">
+            <div class="col-span-full mx-auto pt-5">
                 <div class="sm:flex">
-                    <div class="sm:flex-auto sm:w-1/2 text-center p-1">
-                        <div class="w-full shadow-xl rounded-md bg-white p-2 mb-4">
+                    <div class="sm:flex-auto sm:col-span-6 text-center p-1">
+                        <div class="col-span-full shadow-xl rounded-md bg-white p-2 mb-4">
 
                             <p class="text-xl font-semibold text-orange-600 mt-2">Current Serving</p>
                             <h1 class="text-2xl font-semibold text-blue-900 mt-2">Token Number</h1>
 
                             <div
-                                class=" inline-block mt-6 text-6xl font-semibold text-orange-600 border border-2 border-orange-600 rounded p-4 w-4/5 md:w-3/5 lg:w-1/2">
+                                class=" inline-block mt-6 text-6xl font-semibold text-orange-600 border border-2 border-orange-600 rounded p-4 w-4/5 md:w-3/5 lg:col-span-6">
                                 @{{ top_ticket_str }}
                             </div>
 
@@ -25,7 +25,7 @@
                         </div>
                     </div>
 
-                    <div class="sm:flex-auto w-1/1 sm:w-1/2 p-1 hidden sm:block">
+                    <div class="sm:flex-auto w-1/1 sm:col-span-6 p-1 hidden sm:block">
                         <div class="shadow-xl rounded-md bg-white p-1">
                             <iframe width="100%" height="310"
                                 src="https://www.youtube.com/embed/4cPOoXRxNPY?&autoplay=1&mute=1"frameborder="0"
@@ -249,7 +249,7 @@
 
     <div class="relative overflow-hidden mb-8">
         <div class="overflow-hidden px-3 py-10 flex justify-center">
-            <div class="w-full max-w-xs login-card">
+            <div class="col-span-full max-w-xs login-card">
 
                 <p class="text-center text-gray-500 text-xs">
                     &copy;2022 - {{ date('Y') }}. {{ ___('isp-copy-right') }}
