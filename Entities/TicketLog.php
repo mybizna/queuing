@@ -46,7 +46,7 @@ class TicketLog extends BaseModel
     {
         $this->fields = $table ?? new Blueprint($this->table);
         
-        $this->fields->increments('id')->html('text');
+        $this->fields->increments('id')->html('hidden');
         $this->fields->foreignId('ticket_id')->html('recordpicker')->relation(['queuing', 'ticket']);
         $this->fields->foreignId('attendant_id')->html('recordpicker')->relation(['queuing', 'attendant']);
     }
