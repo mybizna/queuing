@@ -63,7 +63,7 @@ class Attendant extends BaseModel
         $structure['table'] = ['name', 'slug', 'user_id', 'destination_id'];
         $structure['form'] = [
             ['label' => 'Name', 'class' => 'col-span-full', 'fields' => ['name', 'slug']],
-            ['label' => 'Name', 'class' => 'col-span-6', 'fields' => ['user_id', 'destination_id']],
+            ['label' => 'Name', 'class' => 'col-span-full md:col-span-6', 'fields' => ['user_id', 'destination_id']],
             ['label' => 'Name', 'class' => 'col-span-full', 'fields' => ['description']],
         ];
         $structure['filter'] = ['name', 'slug', 'user_id', 'destination_id'];
