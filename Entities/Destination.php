@@ -62,7 +62,7 @@ class Destination extends BaseModel
         $structure['table'] = ['name', 'slug', 'assigned'];
         $structure['form'] = [
             ['label' => 'Name', 'class' => 'col-span-full', 'fields' => ['name', 'slug']],
-            ['label' => 'Assigned', 'class' => 'col-span-full md:col-span-6ull md:col-span-6ull md:col-span-6ull md:col-span-6ull md:col-span-6', 'fields' => ['assigned']],
+            ['label' => 'Assigned', 'class' => 'col-span-full md:col-span-6ull md:col-span-6ull md:col-span-6ull md:col-span-6ull  md:col-span-6 md:pr-2', 'fields' => ['assigned']],
             ['label' => 'Description', 'class' => 'col-span-full', 'fields' => ['description']],
         ];
         $structure['filter'] = ['name', 'slug', 'assigned'];
