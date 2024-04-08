@@ -13,7 +13,7 @@ class Attendant extends BaseModel
      *
      * @var array<string>
      */
-    protected $fillable = ['name', 'slug', 'description', 'user_id', 'destination_id'];
+    protected $fillable = ['name', 'slug', 'description', 'partner_id', 'destination_id'];
 
     /**
      * The fields that are to be render when performing relationship queries.
@@ -50,7 +50,7 @@ class Attendant extends BaseModel
         $this->fields->string('name')->html('text');
         $this->fields->string('slug')->html('text');
         $this->fields->string('description')->html('textarea');
-        $this->fields->foreignId('user_id')->nullable()->index('user_id')->html('recordpicker')->relation(['users']);
+        $this->fields->foreignId('partner_id')->nullable()->index('partner_id')->html('recordpicker')->relation(['users']);
         $this->fields->foreignId('destination_id')->html('recordpicker')->relation(['queuing', 'destination']);
     }
 
@@ -60,13 +60,13 @@ class Attendant extends BaseModel
     public function structure($structure): array
     {
 
-        $structure['table'] = ['name', 'slug', 'user_id', 'destination_id'];
+        $structure['table'] = ['name', 'slug', 'partner_id', 'destination_id'];
         $structure['form'] = [
             ['label' => 'Attendant Name', 'class' => 'col-span-full', 'fields' => ['name', 'slug']],
-            ['label' => 'Attendant Detail', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['user_id', 'destination_id']],
+            ['label' => 'Attendant Detail', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['partner_id', 'destination_id']],
             ['label' => 'Attendant Other Setting', 'class' => 'col-span-full', 'fields' => ['description']],
         ];
-        $structure['filter'] = ['name', 'slug', 'user_id', 'destination_id'];
+        $structure['filter'] = ['name', 'slug', 'partner_id', 'destination_id'];
 
         return $structure;
     }
