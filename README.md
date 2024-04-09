@@ -9,12 +9,12 @@ After Installing Mybizna Erp. Use the command below to install Queuing System
 ## Features
 The Queuing Management System module offers the following features:
 
-- *Queue Creation:* Create a new queue with a name and a description.
-- *Queue Management:* Manage the queues by adding or removing customers from the queue.
-- *Customer Management:* Manage the customers by adding or removing them from the system, and viewing their details such as name, contact information, and history.
-- *Queue Monitoring:* Monitor the queues in real-time, view the number of customers in each queue, and track the status of each customer.
-- *Notifications:* Notify customers via SMS or email when their turn is coming up or when they have reached the front of the queue.
-- *Reporting:* Generate reports on queue performance, customer satisfaction, and other metrics.
+- **Queue Creation:** Create a new queue with a name and a description.
+- **Queue Management:** Manage the queues by adding or removing customers from the queue.
+- **Customer Management:** Manage the customers by adding or removing them from the system, and viewing their details such as name, contact information, and history.
+- **Queue Monitoring:** Monitor the queues in real-time, view the number of customers in each queue, and track the status of each customer.
+- **Notifications:** Notify customers via SMS or email when their turn is coming up or when they have reached the front of the queue.
+- **Reporting:** Generate reports on queue performance, customer satisfaction, and other metrics.
 
 ## Getting Started
 To use the Queuing Management System module, you must have access to MyBizna ERP. Once you have access, follow these steps:
