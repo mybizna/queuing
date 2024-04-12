@@ -51,4 +51,14 @@ class TicketLog extends BaseModel
         $this->fields->foreignId('attendant_id')->html('recordpicker')->relation(['queuing', 'attendant']);
     }
 
+    /**
+     * Define rights for this model.
+     *
+     * @return array
+     */
+    public function rights(): array
+    {
+
+    }
+
 }
