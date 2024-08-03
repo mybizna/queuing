@@ -15,20 +15,6 @@ class Destination extends BaseModel
     protected $fillable = ['name', 'slug', 'description', 'assigned'];
 
     /**
-     * The fields that are to be render when performing relationship queries.
-     *
-     * @var array<string>
-     */
-    public $rec_names = ['name'];
-
-    /**
-     * List of tables names that are need in this model during migration.
-     *
-     * @var array<string>
-     */
-    public array $migrationDependancy = [];
-
-    /**
      * The table associated with the model.
      *
      * @var string
@@ -54,36 +40,8 @@ class Destination extends BaseModel
         $this->fields->enum('assigned', $assigned)->options($assigned)->default('least')->nullable()->html('select');
     }
 
-    /**
-     * List of structure for this model.
-     */
-    public function structure($structure): array
-    {
-        $structure['table'] = ['name', 'slug', 'assigned'];
-        $structure['form'] = [
-            ['label' => 'Destination Name', 'class' => 'col-span-full', 'fields' => ['name', 'slug']],
-            ['label' => 'Destination Assigned', 'class' => 'col-span-full md:col-span-6ull md:col-span-6ull md:col-span-6ull md:col-span-6ull  md:col-span-6 md:pr-2', 'fields' => ['assigned']],
-            ['label' => 'Destination Description', 'class' => 'col-span-full', 'fields' => ['description']],
-        ];
-        $structure['filter'] = ['name', 'slug', 'assigned'];
+ 
 
-        return $structure;
-    }
 
-    /**
-     * Define rights for this model.
-     *
-     * @return array
-     */
-    public function rights(): array
-    {
-        $rights = parent::rights();
-
-        $rights['staff'] = ['view' => true];
-        $rights['registered'] = ['view' => true];
-        $rights['guest'] = [];
-
-        return $rights;
-    }
 
 }

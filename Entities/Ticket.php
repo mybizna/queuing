@@ -16,20 +16,6 @@ class Ticket extends BaseModel
     protected $fillable = ['number', 'prefix', 'attendant_id', 'is_closed'];
 
     /**
-     * The fields that are to be render when performing relationship queries.
-     *
-     * @var array<string>
-     */
-    public $rec_names = ['number', 'attendant_id'];
-
-    /**
-     * List of tables names that are need in this model during migration.
-     *
-     * @var array<string>
-     */
-    public array $migrationDependancy = ['queuing_attendant'];
-
-    /**
      * The table associated with the model.
      *
      * @var string
@@ -54,31 +40,7 @@ class Ticket extends BaseModel
         $this->fields->tinyInteger('is_closed')->nullable()->default(0)->html('switch');
     }
 
-    /**
-     * List of structure for this model.
-     */
-    public function structure($structure): array
-    {
-        $structure['table'] = ['number', 'prefix', 'attendant_id', 'is_closed'];
-        $structure['filter'] = ['number', 'prefix', 'attendant_id', 'is_closed'];
 
-        return $structure;
-    }
-
-    /**
-     * Define rights for this model.
-     *
-     * @return array
-     */
-    public function rights(): array
-    {
-        $rights = parent::rights();
-
-        $rights['staff'] = ['view' => true];
-        $rights['registered'] = ['view' => true];
-        $rights['guest'] = [];
-
-        return $rights;
-    }
+ 
 
 }
