@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('queuing_ticket_log', function (Blueprint $table) {
             $table->id();
-            
+
+            $table->foreignId('ticket_id')->nullable()->index('ticket_id');
+            $table->foreignId('attendant_id')->nullable()->index('attendant_id');
+
             $table->timestamps();
         });
     }

@@ -22,20 +22,7 @@ class TicketLog extends BaseModel
      */
     protected $table = "queuing_ticket_log";
 
-    /**
-     * List of fields to be migrated to the datebase when creating or updating model during migration.
-     *
-     * @param Blueprint $table
-     * @return void
-     */
-    public function fields(Blueprint $table = null): void
-    {
-        $this->fields = $table ?? new Blueprint($this->table);
-        
-        $this->fields->increments('id')->html('hidden');
-        $this->fields->foreignId('ticket_id')->html('recordpicker')->relation(['queuing', 'ticket']);
-        $this->fields->foreignId('attendant_id')->html('recordpicker')->relation(['queuing', 'attendant']);
-    }
+ 
 
 
 

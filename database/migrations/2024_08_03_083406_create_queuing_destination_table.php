@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('queuing_destination', function (Blueprint $table) {
             $table->id();
-            
+
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
+            $table->text('description')->nullable();
+            $table->enum('assigned', ['least', 'specific', 'random'])->nullable();
+
             $table->timestamps();
         });
     }
