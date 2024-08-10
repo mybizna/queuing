@@ -17,11 +17,9 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
             $table->text('description')->nullable();
-            $table->foreignId('partner_id')->constrained('partner_partner')->onDelete('cascade')->nullable()->index('partner_id');
-            $table->foreignId('destination_id')->constrained('queuing_destination')->onDelete('cascade')->nullable()->index('destination_id');
+            $table->foreignId('partner_id')->constrained('partner_partner')->onDelete('cascade')->nullable()->index('queuing_attendant_partner_id');
+            $table->foreignId('destination_id')->constrained('queuing_destination')->onDelete('cascade')->nullable()->index('queuing_attendant_destination_id');
 
-       
-            
             $table->timestamps();
         });
     }
