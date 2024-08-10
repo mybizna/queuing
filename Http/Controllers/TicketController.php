@@ -5,10 +5,10 @@ namespace Modules\Queuing\Http\Controllers;
 use Illuminate\Http\Request;
 use Modules\Base\Http\Controllers\BaseController;
 use Modules\Queuing\Classes\PrintTicket;
-use Modules\Queuing\Entities\Attendant;
-use Modules\Queuing\Entities\Destination;
-use Modules\Queuing\Entities\Ticket;
-use Modules\Queuing\Entities\TicketLog;
+use Modules\Queuing\Models\Attendant;
+use Modules\Queuing\Models\Destination;
+use Modules\Queuing\Models\Ticket;
+use Modules\Queuing\Models\TicketLog;
 
 class TicketController extends BaseController
 {

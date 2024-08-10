@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Queuing\Entities\Data;
+namespace Modules\Queuing\Models\Data;
 
 use Modules\Base\Classes\Datasetter;
 
@@ -8,7 +8,7 @@ class Destination
 {
     /**
      * Set ordering of the Class to be migrated.
-     * 
+     *
      * @var int
      */
     public $ordering = 1;

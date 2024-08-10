@@ -1,10 +1,8 @@
 <?php
 
-namespace Modules\Queuing\Entities;
+namespace Modules\Queuing\Models;
 
-use Illuminate\Database\Schema\Blueprint;
-use Modules\Base\Classes\Migration;
-use Modules\Base\Entities\BaseModel;
+use Modules\Base\Models\BaseModel;
 
 class TicketLog extends BaseModel
 {
@@ -21,9 +19,5 @@ class TicketLog extends BaseModel
      * @var string
      */
     protected $table = "queuing_ticket_log";
-
- 
-
-
 
 }
