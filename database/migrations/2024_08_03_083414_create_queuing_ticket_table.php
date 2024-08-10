@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('number')->nullable();
             $table->string('prefix')->nullable();
-            $table->foreignId('attendant_id')->nullable()->index('attendant_id');
+            $table->foreignId('attendant_id')->constrained('queuing_attendant')->onDelete('cascade')->nullable()->index('attendant_id');
             $table->tinyInteger('is_announced')->nullable()->default(0);
             $table->tinyInteger('is_closed')->nullable()->default(0);
 

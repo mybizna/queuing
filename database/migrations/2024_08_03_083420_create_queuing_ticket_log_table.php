@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('queuing_ticket_log', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('ticket_id')->nullable()->index('ticket_id');
-            $table->foreignId('attendant_id')->nullable()->index('attendant_id');
+            $table->foreignId('ticket_id')->constrained('queuing_ticket')->onDelete('cascade')->nullable()->index('ticket_id');
+            $table->foreignId('attendant_id')->constrained('queuing_attendant')->onDelete('cascade')->nullable()->index('attendant_id');
 
             $table->timestamps();
         });
