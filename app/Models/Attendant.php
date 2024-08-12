@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Queuing\Models
+namespace Modules\Queuing\Models;
 
-use Modules\Base\ModelsaseModel;
+use Modules\Base\Models\BaseModel;
 
 class Attendant extends BaseModel
 {

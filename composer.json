@@ -27,7 +27,14 @@
   },
   "autoload": {
     "psr-4": {
-      "Modules\\Queuing\\": ""
+      "Modules\\Queuing\\": "app/",
+      "Modules\\Queuing\\Database\\Factories\\": "database/factories/",
+      "Modules\\Queuing\\Database\\Seeders\\": "database/seeders/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Queuing\\Tests\\": "tests/"
     }
   }
 }
