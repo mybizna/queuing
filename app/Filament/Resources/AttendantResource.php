@@ -2,9 +2,6 @@
 
 namespace Modules\Queuing\Filament\Resources;
 
-use Modules\Queuing\Filament\Resources\AttendantResource\Pages;
-use Modules\Queuing\Filament\Resources\AttendantResource\RelationManagers;
-use Modules\Queuing\Models\Attendant;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,10 +9,16 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Queuing\Filament\Resources\AttendantResource\Pages;
+use Modules\Queuing\Models\Attendant;
 
 class AttendantResource extends Resource
 {
     protected static ?string $model = Attendant::class;
+
+    protected static ?string $slug = 'queuing/attendant';
+
+    protected static ?string $navigationGroup = 'Queuing';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

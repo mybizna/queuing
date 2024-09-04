@@ -2,9 +2,6 @@
 
 namespace Modules\Queuing\Filament\Resources;
 
-use Modules\Queuing\Filament\Resources\TicketResource\Pages;
-use Modules\Queuing\Filament\Resources\TicketResource\RelationManagers;
-use Modules\Queuing\Models\Ticket;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,10 +9,16 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Queuing\Filament\Resources\TicketResource\Pages;
+use Modules\Queuing\Models\Ticket;
 
 class TicketResource extends Resource
 {
     protected static ?string $model = Ticket::class;
+
+    protected static ?string $slug = 'queuing/ticket';
+
+    protected static ?string $navigationGroup = 'Queuing';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
