@@ -3,6 +3,8 @@
 namespace Modules\Queuing\Models;
 
 use Modules\Base\Models\BaseModel;
+use Modules\Queuing\Models\Attendant;
+use Modules\Queuing\Models\Ticket;
 
 class TicketLog extends BaseModel
 {
@@ -19,5 +21,23 @@ class TicketLog extends BaseModel
      * @var string
      */
     protected $table = "queuing_ticket_log";
+
+    /**
+     * Add relationship to Ticket
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function ticket()
+    {
+        return $this->belongsTo(Ticket::class);
+    }
+
+    /**
+     * Add relationship to Attendant
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function attendant()
+    {
+        return $this->belongsTo(Attendant::class);
+    }
 
 }

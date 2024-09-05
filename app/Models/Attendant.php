@@ -3,6 +3,8 @@
 namespace Modules\Queuing\Models;
 
 use Modules\Base\Models\BaseModel;
+use Modules\Partner\Models\Partner;
+use Modules\Queuing\Models\Destination;
 
 class Attendant extends BaseModel
 {
@@ -19,5 +21,23 @@ class Attendant extends BaseModel
      * @var string
      */
     protected $table = "queuing_attendant";
+
+    /**
+     * Add relationship to Partner
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function partner()
+    {
+        return $this->belongsTo(Partner::class);
+    }
+
+    /**
+     * Add relationship to Destination
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function destination()
+    {
+        return $this->belongsTo(Destination::class);
+    }
 
 }

@@ -3,6 +3,7 @@
 namespace Modules\Queuing\Models;
 
 use Modules\Base\Models\BaseModel;
+use Modules\Queuing\Models\Attendant;
 
 class Ticket extends BaseModel
 {
@@ -19,5 +20,14 @@ class Ticket extends BaseModel
      * @var string
      */
     protected $table = "queuing_ticket";
+
+    /**
+     * Add relationship to Attendant
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function attendant()
+    {
+        return $this->belongsTo(Attendant::class);
+    }
 
 }
