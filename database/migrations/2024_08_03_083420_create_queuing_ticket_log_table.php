@@ -14,10 +14,15 @@ return new class extends Migration
         Schema::create('queuing_ticket_log', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('ticket_id')->constrained('queuing_ticket')->onDelete('cascade')->nullable()->index('queuing_ticket_log_ticket_id');
-            $table->foreignId('attendant_id')->constrained('queuing_attendant')->onDelete('cascade')->nullable()->index('queuing_ticket_log_attendant_id');
+            $table->foreignId('ticket_id')->nullable()->constrained('queuing_ticket')->onDelete('set null');
+            $table->foreignId('attendant_id')->nullable()->constrained('queuing_attendant')->onDelete('set null');
+
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('deleted_by')->nullable()->constrained('users')->onDelete('set null');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -17,10 +17,15 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
             $table->text('description')->nullable();
-            $table->foreignId('partner_id')->constrained('partner_partner')->onDelete('cascade')->nullable()->index('queuing_attendant_partner_id');
-            $table->foreignId('destination_id')->constrained('queuing_destination')->onDelete('cascade')->nullable()->index('queuing_attendant_destination_id');
+            $table->foreignId('partner_id')->nullable()->constrained('partner_partner')->onDelete('set null');
+            $table->foreignId('destination_id')->nullable()->constrained('queuing_destination')->onDelete('set null');
+
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('deleted_by')->nullable()->constrained('users')->onDelete('set null');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -16,11 +16,16 @@ return new class extends Migration
 
             $table->string('number')->nullable();
             $table->string('prefix')->nullable();
-            $table->foreignId('attendant_id')->constrained('queuing_attendant')->onDelete('cascade')->nullable()->index('queuing_ticket_attendant_id');
+            $table->foreignId('attendant_id')->nullable()->constrained('queuing_attendant')->onDelete('set null');
             $table->tinyInteger('is_announced')->nullable()->default(0);
             $table->tinyInteger('is_closed')->nullable()->default(0);
 
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('deleted_by')->nullable()->constrained('users')->onDelete('set null');
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
