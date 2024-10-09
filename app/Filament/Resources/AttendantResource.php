@@ -4,15 +4,12 @@ namespace Modules\Queuing\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Modules\Queuing\Filament\Resources\AttendantResource\Pages;
+use Modules\Base\Filament\Resources\BaseResource;
 use Modules\Queuing\Models\Attendant;
 
-class AttendantResource extends Resource
+class AttendantResource extends BaseResource
 {
     protected static ?string $model = Attendant::class;
 
@@ -81,27 +78,4 @@ class AttendantResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListAttendants::route('/'),
-            'create' => Pages\CreateAttendant::route('/create'),
-            'edit' => Pages\EditAttendant::route('/{record}/edit'),
-        ];
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
-    }
 }

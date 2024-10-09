@@ -4,15 +4,12 @@ namespace Modules\Queuing\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Modules\Queuing\Filament\Resources\TicketLogResource\Pages;
+use Modules\Base\Filament\Resources\BaseResource;
 use Modules\Queuing\Models\TicketLog;
 
-class TicketLogResource extends Resource
+class TicketLogResource extends BaseResource
 {
     protected static ?string $model = TicketLog::class;
 
@@ -69,27 +66,4 @@ class TicketLogResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListTicketLogs::route('/'),
-            'create' => Pages\CreateTicketLog::route('/create'),
-            'edit' => Pages\EditTicketLog::route('/{record}/edit'),
-        ];
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
-    }
 }

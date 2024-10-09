@@ -4,15 +4,12 @@ namespace Modules\Queuing\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Modules\Queuing\Filament\Resources\DestinationResource\Pages;
+use Modules\Base\Filament\Resources\BaseResource;
 use Modules\Queuing\Models\Destination;
 
-class DestinationResource extends Resource
+class DestinationResource extends BaseResource
 {
     protected static ?string $model = Destination::class;
 
@@ -71,27 +68,4 @@ class DestinationResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListDestinations::route('/'),
-            'create' => Pages\CreateDestination::route('/create'),
-            'edit' => Pages\EditDestination::route('/{record}/edit'),
-        ];
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
-    }
 }
