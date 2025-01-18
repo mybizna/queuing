@@ -34,7 +34,6 @@ class Ticket extends BaseModel
 
     public function migration(Blueprint $table): void
     {
-        $table->id();
 
         $table->string('number')->nullable();
         $table->string('prefix')->nullable();

@@ -6,6 +6,7 @@ use Modules\Base\Models\BaseModel;
 use Modules\Partner\Models\Partner;
 use Modules\Queuing\Models\Destination;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Attendant extends BaseModel
 {
@@ -44,7 +45,6 @@ class Attendant extends BaseModel
 
     public function migration(Blueprint $table): void
     {
-        $table->id();
 
         $table->string('name')->nullable();
         $table->string('slug')->nullable();

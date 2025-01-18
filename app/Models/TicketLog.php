@@ -6,6 +6,7 @@ use Modules\Base\Models\BaseModel;
 use Modules\Queuing\Models\Attendant;
 use Modules\Queuing\Models\Ticket;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TicketLog extends BaseModel
 {
@@ -43,7 +44,7 @@ class TicketLog extends BaseModel
 
     public function migration(Blueprint $table): void
     {
-        $table->id();
+
 
         $table->foreignId('ticket_id')->nullable()->constrained(table: 'queuing_ticket')->onDelete('set null');
         $table->foreignId('attendant_id')->nullable()->constrained(table: 'queuing_attendant')->onDelete('set null');
