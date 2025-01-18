@@ -3,6 +3,7 @@
 namespace Modules\Queuing\Models;
 
 use Modules\Base\Models\BaseModel;
+use Illuminate\Database\Schema\Blueprint;
 
 class Destination extends BaseModel
 {
@@ -20,4 +21,15 @@ class Destination extends BaseModel
      */
     protected $table = "queuing_destination";
 
+
+    public function migration(Blueprint $table): void
+    {
+        $table->id();
+
+        $table->string('name')->nullable();
+        $table->string('slug')->nullable();
+        $table->text('description')->nullable();
+        $table->enum('assigned', ['least', 'specific', 'random'])->nullable();
+
+    }
 }

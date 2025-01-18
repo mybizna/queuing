@@ -5,6 +5,7 @@ namespace Modules\Queuing\Models;
 use Modules\Base\Models\BaseModel;
 use Modules\Queuing\Models\Attendant;
 use Modules\Queuing\Models\Ticket;
+use Illuminate\Database\Schema\Blueprint;
 
 class TicketLog extends BaseModel
 {
@@ -26,7 +27,7 @@ class TicketLog extends BaseModel
      * Add relationship to Ticket
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function ticket()
+    public function ticket(): BelongsTo
     {
         return $this->belongsTo(Ticket::class);
     }
@@ -35,9 +36,18 @@ class TicketLog extends BaseModel
      * Add relationship to Attendant
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function attendant()
+    public function attendant(): BelongsTo
     {
         return $this->belongsTo(Attendant::class);
+    }
+
+    public function migration(Blueprint $table): void
+    {
+        $table->id();
+
+        $table->foreignId('ticket_id')->nullable()->constrained(table: 'queuing_ticket')->onDelete('set null');
+        $table->foreignId('attendant_id')->nullable()->constrained(table: 'queuing_attendant')->onDelete('set null');
+
     }
 
 }

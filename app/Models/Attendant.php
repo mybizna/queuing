@@ -5,6 +5,7 @@ namespace Modules\Queuing\Models;
 use Modules\Base\Models\BaseModel;
 use Modules\Partner\Models\Partner;
 use Modules\Queuing\Models\Destination;
+use Illuminate\Database\Schema\Blueprint;
 
 class Attendant extends BaseModel
 {
@@ -26,7 +27,7 @@ class Attendant extends BaseModel
      * Add relationship to Partner
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function partner()
+    public function partner(): BelongsTo
     {
         return $this->belongsTo(Partner::class);
     }
@@ -35,9 +36,21 @@ class Attendant extends BaseModel
      * Add relationship to Destination
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function destination()
+    public function destination(): BelongsTo
     {
         return $this->belongsTo(Destination::class);
     }
 
+
+    public function migration(Blueprint $table): void
+    {
+        $table->id();
+
+        $table->string('name')->nullable();
+        $table->string('slug')->nullable();
+        $table->text('description')->nullable();
+        $table->foreignId('partner_id')->nullable()->constrained(table: 'partner_partner')->onDelete('set null');
+        $table->foreignId('destination_id')->nullable()->constrained(table: 'queuing_destination')->onDelete('set null');
+
+    }
 }
