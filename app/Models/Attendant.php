@@ -1,12 +1,11 @@
 <?php
-
 namespace Modules\Queuing\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Models\BaseModel;
 use Modules\Partner\Models\Partner;
 use Modules\Queuing\Models\Destination;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Attendant extends BaseModel
 {
@@ -42,15 +41,19 @@ class Attendant extends BaseModel
         return $this->belongsTo(Destination::class);
     }
 
-
     public function migration(Blueprint $table): void
     {
 
         $table->string('name')->nullable();
         $table->string('slug')->nullable();
         $table->text('description')->nullable();
-        $table->foreignId('partner_id')->nullable()->constrained(table: 'partner_partner')->onDelete('set null');
-        $table->foreignId('destination_id')->nullable()->constrained(table: 'queuing_destination')->onDelete('set null');
+        $table->unsignedBigInteger('partner_id')->nullable();
+        $table->unsignedBigInteger('destination_id')->nullable();
+    }
 
+    public function post_migration(Blueprint $table): void
+    {
+        $table->foreign('partner_id')->references('id')->on('partner_partner')->onDelete('set null');
+        $table->foreign('destination_id')->references('id')->on('queuing_destination')->onDelete('set null');
     }
 }

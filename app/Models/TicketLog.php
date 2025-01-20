@@ -46,9 +46,14 @@ class TicketLog extends BaseModel
     {
 
 
-        $table->foreignId('ticket_id')->nullable()->constrained(table: 'queuing_ticket')->onDelete('set null');
-        $table->foreignId('attendant_id')->nullable()->constrained(table: 'queuing_attendant')->onDelete('set null');
+        $table->unsignedBigInteger('ticket_id')->nullable();
+        $table->unsignedBigInteger('attendant_id')->nullable();
+    }
 
+    public function post_migration(Blueprint $table): void
+    {
+        $table->foreign('ticket_id')->references('id')->on('queuing_ticket')->onDelete('set null');
+        $table->foreign('attendant_id')->references('id')->on('queuing_attendant')->onDelete('set null');
     }
 
 }

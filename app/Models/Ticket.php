@@ -1,11 +1,10 @@
 <?php
-
 namespace Modules\Queuing\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Models\BaseModel;
 use Modules\Queuing\Models\Attendant;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Ticket extends BaseModel
 {
@@ -37,10 +36,15 @@ class Ticket extends BaseModel
 
         $table->string('number')->nullable();
         $table->string('prefix')->nullable();
-        $table->foreignId('attendant_id')->nullable()->constrained(table: 'queuing_attendant')->onDelete('set null');
+        $table->unsignedBigInteger('attendant_id')->nullable();
         $table->tinyInteger('is_announced')->nullable()->default(0);
         $table->tinyInteger('is_closed')->nullable()->default(0);
 
+    }
+
+    public function post_migration(Blueprint $table): void
+    {
+        $table->foreign('attendant_id')->references('id')->on('queuing_attendant')->onDelete('set null');
     }
 
 }
